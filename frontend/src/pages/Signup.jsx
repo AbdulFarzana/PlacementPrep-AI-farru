@@ -30,7 +30,7 @@ export default function Signup({ onLoginSuccess }) {
   const navigate = useNavigate();
 
   const [authMode, setAuthMode] = useState(
-    location.pathname === "/signup" ? "signup" : "login"
+    location.pathname === "/signup" ? "signup" : "login",
   );
 
   const [email, setEmail] = useState("");
@@ -50,7 +50,10 @@ export default function Signup({ onLoginSuccess }) {
     const parsed = signupEmailSchema.safeParse({ email });
     if (!parsed.success) {
       setErrorMsg(
-        getFirstZodErrorMessage(parsed.error, "Please enter a valid email address."),
+        getFirstZodErrorMessage(
+          parsed.error,
+          "Please enter a valid email address.",
+        ),
       );
       return;
     }
@@ -86,7 +89,10 @@ export default function Signup({ onLoginSuccess }) {
 
     if (!parsed.success) {
       setErrorMsg(
-        getFirstZodErrorMessage(parsed.error, "Please check your signup details."),
+        getFirstZodErrorMessage(
+          parsed.error,
+          "Please check your signup details.",
+        ),
       );
       return;
     }
@@ -105,7 +111,9 @@ export default function Signup({ onLoginSuccess }) {
 
       navigate("/dashboard");
     } catch (err) {
-      setErrorMsg(err.message || "Invalid validation parameters or expired OTP.");
+      setErrorMsg(
+        err.message || "Invalid validation parameters or expired OTP.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -117,7 +125,10 @@ export default function Signup({ onLoginSuccess }) {
     const parsed = loginSchema.safeParse({ email, password });
     if (!parsed.success) {
       setErrorMsg(
-        getFirstZodErrorMessage(parsed.error, "Please check your login details."),
+        getFirstZodErrorMessage(
+          parsed.error,
+          "Please check your login details.",
+        ),
       );
       return;
     }
@@ -291,9 +302,6 @@ export default function Signup({ onLoginSuccess }) {
               >
                 Home
               </button>
-              <span className="text-xs font-medium text-slate-400">
-                One place for login and signup
-              </span>
             </div>
 
             <AnimatePresence mode="wait">
