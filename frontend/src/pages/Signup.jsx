@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Rocket,
@@ -22,16 +21,12 @@ import {
   signupEmailSchema,
   signupVerificationSchema,
 } from "../lib/validation";
+import { useNavigate } from "react-router-dom";
 
-import { useLocation, useNavigate } from "react-router-dom";
-
-export default function Signup({ onLoginSuccess }) {
-  const location = useLocation();
+export default function Signup({ initialMode = "login", onLoginSuccess }) {
   const navigate = useNavigate();
 
-  const [authMode, setAuthMode] = useState(
-    location.pathname === "/signup" ? "signup" : "login",
-  );
+  const [authMode, setAuthMode] = useState(initialMode);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -426,6 +421,7 @@ export default function Signup({ onLoginSuccess }) {
                     <button
                       type="button"
                       onClick={() => {
+                        navigate("/signup");
                         setAuthMode("signup");
                         setErrorMsg(null);
                         setSuccessInfo(null);
@@ -553,6 +549,7 @@ export default function Signup({ onLoginSuccess }) {
                     <button
                       type="button"
                       onClick={() => {
+                        navigate("/login");
                         setAuthMode("login");
                         setErrorMsg(null);
                         setSuccessInfo(null);
