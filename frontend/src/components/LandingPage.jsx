@@ -25,6 +25,12 @@ export default function LandingPage() {
     "Career Growth",
   ];
   const [titleNumber, setTitleNumber] = useState(0);
+  const progressValue = 72;
+  const progressRadius = 78;
+  const progressStroke = 16;
+  const progressCircumference = 2 * Math.PI * progressRadius;
+  const progressOffset =
+    progressCircumference - (progressValue / 100) * progressCircumference;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,7 +44,9 @@ export default function LandingPage() {
       {/* Navbar */}
       <nav className="flex flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
         <div className="flex items-center gap-3">
-          <div className="text-3xl sm:text-4xl font-bold text-violet-500">P</div>
+          <div className="text-3xl sm:text-4xl font-bold text-violet-500">
+            P
+          </div>
           <h1 className="text-lg sm:text-xl font-bold">PlacementPilot AI</h1>
         </div>
 
@@ -131,16 +139,21 @@ export default function LandingPage() {
               </p>
 
               <div className="flex flex-wrap gap-2 md:hidden">
-                {["Google", "Amazon", "Microsoft", "Adobe", "TCS", "Infosys"].map(
-                  (company) => (
-                    <span
-                      key={company}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-gray-200"
-                    >
-                      {company}
-                    </span>
-                  ),
-                )}
+                {[
+                  "Google",
+                  "Amazon",
+                  "Microsoft",
+                  "Adobe",
+                  "TCS",
+                  "Infosys",
+                ].map((company) => (
+                  <span
+                    key={company}
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-gray-200"
+                  >
+                    {company}
+                  </span>
+                ))}
               </div>
 
               <div className="relative hidden overflow-hidden md:block">
@@ -180,32 +193,45 @@ export default function LandingPage() {
 
                   <div className="flex items-center justify-center">
                     <div className="relative w-40 h-40 sm:w-48 sm:h-48">
-                      <svg className="w-40 h-40 sm:w-48 sm:h-48 -rotate-90">
+                      <svg
+                        className="w-40 h-40 sm:w-48 sm:h-48 -rotate-90 overflow-visible"
+                        viewBox="0 0 180 180"
+                      >
                         <circle
-                          cx="80"
-                          cy="80"
-                          r="75"
+                          cx="90"
+                          cy="90"
+                          r={progressRadius}
                           stroke="#374151"
-                          strokeWidth="16"
+                          strokeWidth={progressStroke}
                           fill="none"
                         />
 
                         <circle
-                          cx="80"
-                          cy="80"
-                          r="75"
+                          cx="90"
+                          cy="90"
+                          r={progressRadius}
                           stroke="#facc15"
-                          strokeWidth="16"
+                          strokeWidth={progressStroke}
                           fill="none"
                           strokeLinecap="round"
-                          strokeDasharray="471"
-                          strokeDashoffset="132"
+                          strokeDasharray={progressCircumference}
+                          strokeDashoffset={progressOffset}
                         />
                       </svg>
 
-                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <h2 className="text-4xl sm:text-5xl font-bold">72%</h2>
-                        <p className="text-sm sm:text-base text-gray-400">Moderate</p>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                        <div className="flex items-baseline justify-center gap-1 leading-none">
+                          <span className="text-6xl font-bold tracking-tight tabular-nums sm:text-7xl">
+                            {progressValue}
+                          </span>
+                          <span className="text-xl font-semibold leading-none sm:text-2xl">
+                            %
+                          </span>
+                        </div>
+
+                        <p className="text-sm sm:text-base text-gray-400 mt-1">
+                          Moderate
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -217,7 +243,9 @@ export default function LandingPage() {
 
                 {/* Strengths */}
                 <div>
-                  <h3 className="font-semibold text-base sm:text-lg mb-4 sm:mb-5">Top Strengths</h3>
+                  <h3 className="font-semibold text-base sm:text-lg mb-4 sm:mb-5">
+                    Top Strengths
+                  </h3>
 
                   <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center gap-3 text-sm sm:text-base">
@@ -243,7 +271,9 @@ export default function LandingPage() {
 
                   <div className="border-t border-slate-700 my-5 sm:my-6"></div>
 
-                  <h3 className="font-semibold text-base sm:text-lg mb-4 sm:mb-5">Top Weaknesses</h3>
+                  <h3 className="font-semibold text-base sm:text-lg mb-4 sm:mb-5">
+                    Top Weaknesses
+                  </h3>
 
                   <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center gap-3 text-sm sm:text-base">
@@ -266,7 +296,9 @@ export default function LandingPage() {
               {/* Recommendation */}
               <div className="mt-6 sm:mt-8 bg-slate-900 rounded-2xl p-4 sm:p-5 flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center">
                 <div>
-                  <h4 className="font-semibold text-sm sm:text-base">Recommended for you</h4>
+                  <h4 className="font-semibold text-sm sm:text-base">
+                    Recommended for you
+                  </h4>
                   <p className="text-gray-400 mt-1 text-sm sm:text-base">
                     Focus on Dynamic Programming
                   </p>
@@ -343,8 +375,12 @@ export default function LandingPage() {
                 <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto bg-violet-100 rounded-3xl flex items-center justify-center mb-4 sm:mb-6">
                   {item.icon}
                 </div>
-                <h3 className="font-bold text-base sm:text-lg mb-2 sm:mb-3">{item.title}</h3>
-                <p className="text-sm sm:text-base text-gray-600">{item.desc}</p>
+                <h3 className="font-bold text-base sm:text-lg mb-2 sm:mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm sm:text-base text-gray-600">
+                  {item.desc}
+                </p>
 
                 <div className="absolute inset-0 pointer-events-none rounded-3xl bg-gradient-to-r from-violet-500/0 via-violet-500/5 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition duration-500"></div>
               </motion.div>
@@ -391,9 +427,13 @@ export default function LandingPage() {
                   {feature.icon}
                 </div>
 
-                <h3 className="font-bold text-base sm:text-lg mb-2 sm:mb-3">{feature.title}</h3>
+                <h3 className="font-bold text-base sm:text-lg mb-2 sm:mb-3">
+                  {feature.title}
+                </h3>
 
-                <p className="text-sm sm:text-base text-gray-600">{feature.desc}</p>
+                <p className="text-sm sm:text-base text-gray-600">
+                  {feature.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -403,9 +443,7 @@ export default function LandingPage() {
 
         {/* Top Companies */}
         <section className="max-w-7xl mx-auto px-4 sm:px-8 py-14 sm:py-20">
-          <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-10 sm:mb-14"
-          >
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-10 sm:mb-14">
             Top Company Insights
           </h2>
 
@@ -484,7 +522,9 @@ export default function LandingPage() {
                     Readiness {company.readiness}
                   </p>
 
-                  <p className="text-gray-600 mt-3 sm:mt-4 text-sm">Top Skills:</p>
+                  <p className="text-gray-600 mt-3 sm:mt-4 text-sm">
+                    Top Skills:
+                  </p>
 
                   <p className="text-gray-500 text-sm leading-relaxed">
                     {company.skills}

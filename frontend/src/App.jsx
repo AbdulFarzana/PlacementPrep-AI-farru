@@ -102,7 +102,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
-            path="/login"
+            path="/auth"
             element={
               user ? (
                 <Navigate to="/dashboard" replace />
@@ -112,14 +112,12 @@ function App() {
             }
           />
           <Route
+            path="/login"
+            element={<Navigate to="/auth" replace />}
+          />
+          <Route
             path="/signup"
-            element={
-              user ? (
-                <Navigate to="/dashboard" replace />
-              ) : (
-                <Signup onLoginSuccess={handleLoginSuccess} />
-              )
-            }
+            element={<Navigate to="/auth" replace />}
           />
           <Route
             path="/dashboard"

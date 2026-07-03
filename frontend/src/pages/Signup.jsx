@@ -283,6 +283,19 @@ export default function Signup({ onLoginSuccess }) {
 
         <div className="w-full max-w-md space-y-7 py-6">
           <div>
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <button
+                type="button"
+                onClick={() => navigate("/")}
+                className="rounded-full border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-700 transition hover:border-violet-300 hover:text-violet-700"
+              >
+                Home
+              </button>
+              <span className="text-xs font-medium text-slate-400">
+                One place for login and signup
+              </span>
+            </div>
+
             <AnimatePresence mode="wait">
               {authMode === "login" ? (
                 <motion.h2
