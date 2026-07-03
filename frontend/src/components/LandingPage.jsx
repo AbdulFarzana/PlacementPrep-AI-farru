@@ -193,23 +193,20 @@ export default function LandingPage() {
 
                   <div className="flex items-center justify-center">
                     <div className="relative w-40 h-40 sm:w-48 sm:h-48">
-                      <svg
-                        className="w-40 h-40 sm:w-48 sm:h-48 -rotate-90 overflow-visible"
-                        viewBox="0 0 180 180"
-                      >
+                      <svg className="w-40 h-40 sm:w-48 sm:h-48 -rotate-90">
                         <circle
-                          cx="90"
-                          cy="90"
-                          r={progressRadius}
+                          cx="80"
+                          cy="80"
+                          r="75"
                           stroke="#374151"
                           strokeWidth={progressStroke}
                           fill="none"
                         />
 
                         <circle
-                          cx="90"
-                          cy="90"
-                          r={progressRadius}
+                          cx="80"
+                          cy="80"
+                          r="75"
                           stroke="#facc15"
                           strokeWidth={progressStroke}
                           fill="none"
@@ -219,17 +216,9 @@ export default function LandingPage() {
                         />
                       </svg>
 
-                      <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                        <div className="flex items-baseline justify-center gap-1 leading-none">
-                          <span className="text-6xl font-bold tracking-tight tabular-nums sm:text-7xl">
-                            {progressValue}
-                          </span>
-                          <span className="text-xl font-semibold leading-none sm:text-2xl">
-                            %
-                          </span>
-                        </div>
-
-                        <p className="text-sm sm:text-base text-gray-400 mt-1">
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <h2 className="text-4xl sm:text-5xl font-bold">72%</h2>
+                        <p className="text-sm sm:text-base text-gray-400">
                           Moderate
                         </p>
                       </div>
